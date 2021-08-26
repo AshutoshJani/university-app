@@ -10,6 +10,20 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header>
+      <%= render 'layouts/navbar' %>
+    </header>
+
+    <main class="cyan lighten-5">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer class="page-footer grey darker-2">
+      <%= render 'layouts/footer' %>
+    </footer>
+
   </body>
 </html>

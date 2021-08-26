@@ -1,3 +1,18 @@
-<h1>Welcome to the Courses Index</h1>
+<h1 class="center-align">Welcome to the Courses Index</h1>
 
-<h3>This is the ROOT route and can be found under views/courses/index.html.erb</h3>
+<div class="row">
+    <% @courses.each do |course| %>
+        <div class="col s10 m6">
+            <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title"><%= course.short_name %>: <%= course.name %></span>
+                <p><%= course.description %></p>
+            </div>
+            <div class="card-action">
+                <a href="#">More Information</a>
+                <a href="#">Enroll in this course</a>
+            </div>
+            </div>
+        </div>
+    <% end %>
+</div>

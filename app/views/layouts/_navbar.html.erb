@@ -1,0 +1,25 @@
+ <ul id="dropdown1" class="dropdown-content">
+  <li><%= link_to "Login", "#" %></li>
+  <li><%= link_to "Sign Up", "#" %></li>
+</ul>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><%= link_to "About", about_path %></li>
+    <li><%= link_to "Courses", courses_new_path %></li>
+    <li><%= link_to "Enrollment", "#" %></li>
+</ul>
+ 
+ <nav>
+    <div class="nav-wrapper cyan darken-4">
+        <%= link_to "University App", root_path, class: "brand-logo center" %>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Courses", courses_new_path %></li>
+            <li><%= link_to "Enrollment", "#" %></li>
+        </ul>
+        <ul class="right">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
+</nav>
