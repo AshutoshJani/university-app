@@ -1,6 +1,7 @@
  <ul id="dropdown1" class="dropdown-content">
   
   <% if logged_in? %>
+    <li><%= link_to "Add new Course", courses_new_path %></li>
     <li><%= link_to "View Profile", student_path(session[:id]) %></li>
     <li><%= link_to "Edit your Profile", edit_student_path(current_user.id) %></li>
     <li><%= link_to "Logout", logout_path %></li>
@@ -12,8 +13,8 @@
 
 <ul class="sidenav" id="mobile-demo">
     <li><%= link_to "About", about_path %></li>
-    <li><%= link_to "Courses", courses_new_path %></li>
     <% if logged_in? %>
+      <li><%= link_to "Courses", root_path %></li>
       <li><%= link_to "Student Directory", students_path %></li>
       <li><%= link_to "Enrollment", "#" %></li>
     <% end %>
@@ -25,8 +26,8 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Courses", courses_new_path %></li>
             <% if logged_in? %>
+              <li><%= link_to "Courses", root_path %></li>
               <li><%= link_to "Student Directory", students_path %></li>
               <li><%= link_to "Enrollment", "#" %></li>
             <% end %>

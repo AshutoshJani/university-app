@@ -22,4 +22,6 @@ $( document ).on('turbolinks:load', function() {
     $('.sidenav').sidenav();
     $('#fade-out-target').fadeOut(5000);
     M.updateTextFields();
+    $('#textarea1').val('New Text');
+    M.textareaAutoResize($('#textarea1'));
 })
