@@ -1,0 +1,13 @@
+<% if flash.any? %>
+    <% flash.each do |type, msg| %>
+        <div class="container">
+            <div class="row sign-up-form">
+                <div class="col sm12 m12 l12">
+                    <div class="card-panel red lighten-2" id="fade-out-target">
+                        <%= msg %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+<% end %>

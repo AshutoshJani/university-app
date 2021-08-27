@@ -1,0 +1,63 @@
+<% if @student.errors.any? %>
+	<div class="card-panel red lighten-2">
+		<span class="white-text">
+			<div class="row">
+				<div class="col s12">
+					<h4>The following <%= pluralize(@student.errors.count, "error") %> stopped you from signing in:</h4>
+					<ul>
+							<% @student.errors.full_messages.each do |msg| %>
+								<li><h6><%= msg %></h6></li>
+							<% end %>
+					</ul>
+				</div>
+			</div>
+		</span>
+	</div>
+<% end %>
+
+<div class="sign-up-form">
+	<div class="card-panel">
+		<h2 class="center-align">
+            <% if Student.exists?(@student.id) %>
+                Edit your account
+            <% else %>
+                Sign Up
+            <% end %>
+        </h2>
+
+		<div class="row">
+			<%= form_for(@student, html: { class: "col s12" }) do |f| %>
+				<div class="row">
+					<div class="input-field col s12">
+						<%= f.text_field :name, placeholder: @student.name %>
+						<%= f.label :name %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<%= f.email_field :email, placeholder: @student.email %>
+						<%= f.label :email %>
+					</div>
+				</div>
+        <div class="row">
+					<div class="input-field col s12">
+						<%= f.password_field :password %>
+						<%= f.label :password %>
+					</div>
+				</div>
+        <% if @student.new_record? %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.password_field :password_confirmation %>
+              <%= f.label :password_confirmation %>
+            </div>
+          </div>
+        <% end %>
+        
+				<div class="row center-align">
+				<%= f.submit(Student.exists?(@student.id) ? "Update your account" : "Sign Up", class: "waves-effect waves-light btn-large white-text") %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

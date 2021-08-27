@@ -1,12 +1,22 @@
  <ul id="dropdown1" class="dropdown-content">
-  <li><%= link_to "Login", "#" %></li>
-  <li><%= link_to "Sign Up", "#" %></li>
+  
+  <% if logged_in? %>
+    <li><%= link_to "View Profile", student_path(session[:id]) %></li>
+    <li><%= link_to "Edit your Profile", edit_student_path(current_user.id) %></li>
+    <li><%= link_to "Logout", logout_path %></li>
+  <% else %>
+    <li><%= link_to "Login", login_path %></li>
+    <li><%= link_to "Sign Up", new_student_path %></li>
+  <% end %>
 </ul>
 
 <ul class="sidenav" id="mobile-demo">
     <li><%= link_to "About", about_path %></li>
     <li><%= link_to "Courses", courses_new_path %></li>
-    <li><%= link_to "Enrollment", "#" %></li>
+    <% if logged_in? %>
+      <li><%= link_to "Student Directory", students_path %></li>
+      <li><%= link_to "Enrollment", "#" %></li>
+    <% end %>
 </ul>
  
  <nav>
@@ -16,10 +26,21 @@
         <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Courses", courses_new_path %></li>
-            <li><%= link_to "Enrollment", "#" %></li>
+            <% if logged_in? %>
+              <li><%= link_to "Student Directory", students_path %></li>
+              <li><%= link_to "Enrollment", "#" %></li>
+            <% end %>
+            
         </ul>
         <ul class="right">
-            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+            <% if logged_in? %>
+              <%= current_user.name %>
+            <% else %>
+              Account
+            <% end %>
+            
+            <i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
     </div>
 </nav>
